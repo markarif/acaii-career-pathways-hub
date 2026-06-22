@@ -707,6 +707,79 @@ footer{background:var(--navy);padding:48px 24px 28px;color:rgba(255,255,255,.6)}
 <div id="toast-wrap"></div>
 
 <script>
+// ================================================================
+// GOOGLE SHEETS CONFIG — paste your Web App URL here after deploying
+// ================================================================
+const CAREER_HUB_API_URL = 'https://script.google.com/macros/s/AKfycbyEWsBmimbUEtwpT8Anlbfj5RpJBG8UIZ4qRywj9KuN52CTj3rYM42AFTn8jMazU-MT/exec';
+const IS_CONFIGURED = !CAREER_HUB_API_URL.startsWith('REPLACE');
+
+// ── API HELPER ───────────────────────────────────────────────────
+async function hubApi(action, body=null){
+  if(!IS_CONFIGURED) throw new Error('API not configured. Set CAREER_HUB_API_URL.');
+  if(body){
+    const res=await fetch(CAREER_HUB_API_URL,{
+      method:'POST',
+      body:JSON.stringify({action,...body}),
+      headers:{'Content-Type':'text/plain'}
+    });
+    const json=await res.json();
+    if(json.error) throw new Error(json.error);
+    return json;
+  } else {
+    const res=await fetch(CAREER_HUB_API_URL+'?action='+encodeURIComponent(action));
+    const json=await res.json();
+    if(json.error) throw new Error(json.error);
+    return json;
+  }
+}
+
+// ── COLOR MAP ────────────────────────────────────────────────────
+const COLOR_MAP={
+  green:'#16A34A', navy:'#1B275A', amber:'#D97706',
+  red:'#DC2626', purple:'#7C3AED', blue:'#1D4ED8'
+};
+const BG_MAP={
+  green:'#DCFCE7', navy:'#EEF2FF', amber:'#FEF3C7',
+  red:'#FEE2E2', purple:'#EDE9FE', blue:'#DBEAFE'
+};
+
+// ── OPPORTUNITIES ─────────────────────────────────────────────────
+function esc(s){ const d=document.createElement('div');d.textContent=s;return d.innerHTML; }
+
+function buildOppCard(o){
+  const main=COLOR_MAP[o.bannerColor]||COLOR_MAP.navy;
+  const bg=BG_MAP[o.typeColor]||BG_MAP.navy;
+  const btnClass=o.buttonClass==='green'?'green':'';
+  return `<div class="opp-card" data-tags="${esc(o.tags)}">
+    <div class="opp-banner" style="background:${main}"></div>
+    <div class="opp-body">
+      <div class="opp-type" style="color:${main}">${esc(o.typeLabel||o.type)}</div>
+      <div class="opp-name">${esc(o.name)}</div>
+      <div class="opp-org">${esc(o.organisation)}</div>
+      <div class="opp-desc">${esc(o.description)}</div>
+      <div class="deadline-row">
+        <span class="deadline-label">Deadline</span>
+        <span class="deadline-val" style="color:${o.deadlineUrgent?'var(--red)':'var(--green)'}">${esc(o.deadline)}</span>
+      </div>
+      <a href="#apply" class="opp-btn ${btnClass}">${esc(o.buttonText)}</a>
+    </div>
+  </div>`;
+}
+
+async function loadOpportunities(){
+  if(!IS_CONFIGURED) return;
+  try{
+    const res=await hubApi('getOpportunities');
+    const opps=res.opportunities||[];
+    if(!opps.length) return;
+    const grid=document.getElementById('opp-grid');
+    grid.innerHTML=opps.map(buildOppCard).join('');
+    // Update stat counter
+    const statEl=document.getElementById('stat-opps');
+    if(statEl) animateCounter(statEl,opps.length,'');
+  }catch(e){ console.warn('Could not load opportunities:',e.message); }
+}
+
 // ── FAQ ──────────────────────────────────────────────────────────
 function toggleFaq(el){
   const item=el.closest('.faq-item');
@@ -726,7 +799,8 @@ function setFilter(tag,btn){
 }
 
 function filterByTag(tag){
-  const btn=Array.from(document.querySelectorAll('.filter-btn')).find(b=>b.textContent.toLowerCase().includes(tag))||document.querySelector('.filter-btn');
+  const btn=Array.from(document.querySelectorAll('.filter-btn'))
+    .find(b=>b.textContent.toLowerCase().includes(tag))||document.querySelector('.filter-btn');
   document.getElementById('opportunities')?.scrollIntoView({behavior:'smooth'});
   setTimeout(()=>setFilter(tag,btn||document.querySelector('.filter-btn')),600);
 }
@@ -760,23 +834,40 @@ function showToast(msg,type='ok',duration=4500){
 }
 
 // ── FORM ─────────────────────────────────────────────────────────
-function submitForm(e){
+async function submitForm(e){
   e.preventDefault();
   const btn=e.target.querySelector('.submit-btn');
   btn.disabled=true; btn.textContent='Sending…';
-  setTimeout(()=>{
-    btn.disabled=false; btn.textContent='Send My Request — Free';
-    showToast('Request submitted! You will hear from us within 24 hours.','ok',6000);
+  const data={
+    firstName: document.getElementById('f-fname').value.trim(),
+    lastName:  document.getElementById('f-lname').value.trim(),
+    email:     document.getElementById('f-email').value.trim(),
+    phone:     document.getElementById('f-phone').value.trim(),
+    lookingFor:document.getElementById('f-type').value,
+    background:document.getElementById('f-bg').value,
+    message:   document.getElementById('f-msg').value.trim(),
+  };
+  try{
+    if(IS_CONFIGURED){
+      await hubApi('submitRequest',data);
+    } else {
+      await new Promise(r=>setTimeout(r,1200));
+    }
+    showToast('Request received! We will be in touch within 24 hours.','ok',7000);
     e.target.reset();
-  },1400);
+  }catch(ex){
+    showToast('Could not send — please email us directly at info@acaii.org','err',8000);
+    console.error('Form submit error:',ex.message);
+  }
+  btn.disabled=false; btn.textContent='Send My Request — Free';
 }
 
 // ── ANIMATE STATS ────────────────────────────────────────────────
-function animateCounter(el,target,suffix=''){
+function animateCounter(el,target){
   let n=0; const step=Math.ceil(target/40);
   const interval=setInterval(()=>{
     n=Math.min(n+step,target);
-    el.textContent=n+(suffix);
+    el.textContent=n;
     if(n>=target) clearInterval(interval);
   },35);
 }
@@ -784,13 +875,16 @@ function animateCounter(el,target,suffix=''){
 const observer=new IntersectionObserver(entries=>{
   entries.forEach(entry=>{
     if(entry.isIntersecting){
-      animateCounter(document.getElementById('stat-opps'),47,'');
+      animateCounter(document.getElementById('stat-opps'),47);
       observer.disconnect();
     }
   });
 },{threshold:.5});
 const statEl=document.querySelector('.hero-stats');
 if(statEl) observer.observe(statEl);
+
+// ── INIT ─────────────────────────────────────────────────────────
+document.addEventListener('DOMContentLoaded', loadOpportunities);
 </script>
 </body>
 </html>
