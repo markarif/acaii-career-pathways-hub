@@ -1,0 +1,796 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Africa AI Career Pathways Hub — ACAII-ACTS AI Institute</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --navy:#1B275A;
+  --navy-light:#253470;
+  --green:#16A34A;
+  --green-light:#DCFCE7;
+  --green-mid:#86EFAC;
+  --amber:#D97706;
+  --amber-light:#FEF3C7;
+  --red:#DC2626;
+  --red-light:#FEE2E2;
+  --blue:#1D4ED8;
+  --blue-light:#DBEAFE;
+  --white:#FFFFFF;
+  --light:#F8FAFC;
+  --border:#E2E8F0;
+  --muted:#64748B;
+  --text:#1E293B;
+  --shadow:0 4px 16px rgba(0,0,0,.08);
+  --shadow-lg:0 8px 32px rgba(0,0,0,.12);
+  --radius:14px;
+  --radius-sm:8px;
+}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;color:var(--text);background:var(--white);font-size:15px;line-height:1.6}
+
+/* NAV */
+.nav{position:sticky;top:0;z-index:100;background:var(--navy);padding:0 24px;height:60px;display:flex;align-items:center;justify-content:space-between;box-shadow:0 2px 12px rgba(0,0,0,.25)}
+.nav-brand{display:flex;align-items:center;gap:12px;text-decoration:none}
+.nav-logo{width:36px;height:36px;background:var(--green);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:16px;font-weight:800;color:#fff}
+.nav-name{font-size:15px;font-weight:700;color:#fff;letter-spacing:-.2px}
+.nav-sub{font-size:11px;color:rgba(255,255,255,.55);display:block}
+.nav-links{display:flex;align-items:center;gap:4px}
+.nav-link{color:rgba(255,255,255,.8);text-decoration:none;font-size:13px;font-weight:500;padding:7px 14px;border-radius:6px;transition:.15s}
+.nav-link:hover{background:rgba(255,255,255,.1);color:#fff}
+.nav-cta{background:var(--green);color:#fff !important;font-weight:700 !important;border-radius:6px}
+.nav-cta:hover{background:#15803D !important}
+.nav-mobile-toggle{display:none;background:none;border:none;color:#fff;font-size:22px;cursor:pointer;padding:4px}
+
+/* HERO */
+.hero{background:linear-gradient(135deg,var(--navy) 0%,#2d3e8f 50%,#1a3a6b 100%);padding:72px 24px 80px;text-align:center;position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;inset:0;background:url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")}
+.hero-badge{display:inline-flex;align-items:center;gap:7px;background:rgba(22,163,74,.2);border:1px solid rgba(22,163,74,.4);color:#86EFAC;font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.8px;padding:6px 14px;border-radius:20px;margin-bottom:22px}
+.hero-badge span{width:7px;height:7px;background:var(--green-mid);border-radius:50%;animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.5;transform:scale(1.3)}}
+.hero h1{font-size:clamp(28px,5vw,52px);font-weight:800;color:#fff;line-height:1.15;letter-spacing:-.5px;margin-bottom:16px;max-width:760px;margin-left:auto;margin-right:auto}
+.hero h1 span{color:#86EFAC}
+.hero-sub{font-size:clamp(14px,2vw,18px);color:rgba(255,255,255,.7);max-width:600px;margin:0 auto 36px;line-height:1.7}
+.hero-search{max-width:620px;margin:0 auto 28px;display:flex;gap:8px;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.2);border-radius:12px;padding:6px 6px 6px 18px;backdrop-filter:blur(8px)}
+.hero-search input{flex:1;background:none;border:none;outline:none;color:#fff;font-size:15px}
+.hero-search input::placeholder{color:rgba(255,255,255,.5)}
+.hero-search button{background:var(--green);color:#fff;border:none;padding:10px 22px;border-radius:8px;font-size:14px;font-weight:700;cursor:pointer;white-space:nowrap;transition:.15s}
+.hero-search button:hover{background:#15803D}
+.hero-tags{display:flex;flex-wrap:wrap;gap:8px;justify-content:center}
+.hero-tag{background:rgba(255,255,255,.1);color:rgba(255,255,255,.8);border:1px solid rgba(255,255,255,.15);font-size:12px;padding:5px 12px;border-radius:20px;cursor:pointer;transition:.15s}
+.hero-tag:hover{background:rgba(255,255,255,.18);color:#fff}
+.hero-stats{display:flex;justify-content:center;gap:32px;margin-top:48px;flex-wrap:wrap}
+.hero-stat{text-align:center}
+.hero-stat .n{font-size:28px;font-weight:800;color:#fff}
+.hero-stat .l{font-size:12px;color:rgba(255,255,255,.55);margin-top:2px}
+
+/* SECTION BASICS */
+section{padding:64px 24px}
+.container{max-width:1100px;margin:0 auto}
+.section-label{font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:var(--green);margin-bottom:10px}
+.section-title{font-size:clamp(22px,3vw,34px);font-weight:800;color:var(--navy);letter-spacing:-.3px;margin-bottom:10px}
+.section-sub{font-size:15px;color:var(--muted);max-width:580px;line-height:1.7}
+.section-head{margin-bottom:40px}
+
+/* CATEGORIES */
+.cats{background:var(--light)}
+.cat-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:14px}
+.cat-card{background:var(--white);border:1.5px solid var(--border);border-radius:var(--radius);padding:24px 18px;text-align:center;cursor:pointer;transition:.2s;text-decoration:none;display:block}
+.cat-card:hover{border-color:var(--navy);box-shadow:var(--shadow);transform:translateY(-2px)}
+.cat-icon{font-size:30px;margin-bottom:12px}
+.cat-title{font-size:13px;font-weight:700;color:var(--navy);margin-bottom:4px}
+.cat-desc{font-size:11px;color:var(--muted);line-height:1.5}
+.cat-card.featured{background:var(--navy);border-color:var(--navy)}
+.cat-card.featured .cat-title,.cat-card.featured .cat-desc{color:rgba(255,255,255,.85)}
+
+/* OPPORTUNITIES */
+.opp-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.opp-card{background:var(--white);border:1.5px solid var(--border);border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow);transition:.2s;display:flex;flex-direction:column}
+.opp-card:hover{box-shadow:var(--shadow-lg);transform:translateY(-3px)}
+.opp-banner{height:7px}
+.opp-body{padding:22px;flex:1;display:flex;flex-direction:column}
+.opp-type{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.8px;margin-bottom:8px}
+.opp-name{font-size:16px;font-weight:700;color:var(--navy);margin-bottom:7px;line-height:1.3}
+.opp-org{font-size:12px;color:var(--muted);margin-bottom:12px}
+.opp-desc{font-size:13px;color:var(--text);line-height:1.6;flex:1;margin-bottom:16px}
+.opp-meta{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:16px}
+.opp-tag{font-size:11px;padding:3px 10px;border-radius:12px;font-weight:600}
+.deadline-row{display:flex;align-items:center;justify-content:space-between;padding-top:14px;border-top:1px solid var(--border)}
+.deadline-label{font-size:11px;color:var(--muted)}
+.deadline-val{font-size:12px;font-weight:700;color:var(--red)}
+.opp-btn{display:block;text-align:center;background:var(--navy);color:#fff;font-size:13px;font-weight:700;padding:10px;border-radius:8px;text-decoration:none;margin-top:14px;transition:.15s}
+.opp-btn:hover{background:var(--navy-light)}
+.opp-btn.green{background:var(--green)}
+.opp-btn.green:hover{background:#15803D}
+
+/* HOW IT WORKS */
+.how{background:linear-gradient(135deg,#f0f4ff 0%,#e8f5e9 100%)}
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:28px;position:relative}
+.steps::before{content:'';position:absolute;top:30px;left:calc(16.67% + 14px);right:calc(16.67% + 14px);height:2px;background:linear-gradient(90deg,var(--green),var(--navy));z-index:0}
+.step{text-align:center;position:relative;z-index:1}
+.step-num{width:60px;height:60px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:22px;font-weight:800;margin:0 auto 18px;box-shadow:0 4px 14px rgba(0,0,0,.12)}
+.step-num.s1{background:var(--green);color:#fff}
+.step-num.s2{background:var(--navy);color:#fff}
+.step-num.s3{background:var(--amber);color:#fff}
+.step-title{font-size:16px;font-weight:700;color:var(--navy);margin-bottom:8px}
+.step-desc{font-size:13px;color:var(--muted);line-height:1.6}
+
+/* TESTIMONIAL */
+.story{background:var(--navy);padding:64px 24px}
+.story-inner{max-width:900px;margin:0 auto;display:grid;grid-template-columns:1fr 1.6fr;gap:48px;align-items:center}
+.story-img{background:rgba(255,255,255,.08);border:2px solid rgba(255,255,255,.12);border-radius:16px;padding:28px;text-align:center}
+.story-avatar{width:80px;height:80px;border-radius:50%;background:var(--green);display:flex;align-items:center;justify-content:center;font-size:28px;font-weight:800;color:#fff;margin:0 auto 14px}
+.story-name{font-size:16px;font-weight:700;color:#fff}
+.story-role{font-size:12px;color:rgba(255,255,255,.55);margin-top:3px}
+.story-country{font-size:11px;color:var(--green-mid);margin-top:6px;font-weight:600}
+.story-quote{font-size:clamp(16px,2.2vw,22px);color:#fff;line-height:1.65;font-style:italic;margin-bottom:20px;position:relative}
+.story-quote::before{content:'"';font-size:80px;color:rgba(22,163,74,.3);line-height:1;position:absolute;top:-20px;left:-10px}
+.story-outcome{display:flex;gap:20px;flex-wrap:wrap}
+.outcome-pill{background:rgba(22,163,74,.15);border:1px solid rgba(22,163,74,.3);color:var(--green-mid);font-size:12px;font-weight:600;padding:5px 13px;border-radius:12px}
+
+/* FAQ */
+.faq-list{max-width:780px;margin:0 auto;display:flex;flex-direction:column;gap:10px}
+.faq-item{border:1.5px solid var(--border);border-radius:var(--radius-sm);overflow:hidden;transition:.2s}
+.faq-item.open{border-color:var(--navy)}
+.faq-q{display:flex;justify-content:space-between;align-items:center;padding:16px 20px;cursor:pointer;font-size:14px;font-weight:600;color:var(--navy);gap:12px;user-select:none}
+.faq-q:hover{background:var(--light)}
+.faq-icon{font-size:18px;color:var(--muted);transition:.2s;flex-shrink:0}
+.faq-item.open .faq-icon{transform:rotate(45deg);color:var(--navy)}
+.faq-a{display:none;padding:0 20px 18px;font-size:13px;color:var(--muted);line-height:1.75}
+.faq-item.open .faq-a{display:block}
+
+/* APPLY */
+.apply{background:var(--light)}
+.apply-inner{display:grid;grid-template-columns:1fr 1.2fr;gap:48px;align-items:start}
+.apply-left h2{font-size:clamp(22px,3vw,30px);font-weight:800;color:var(--navy);margin-bottom:12px}
+.apply-left p{font-size:14px;color:var(--muted);line-height:1.7;margin-bottom:20px}
+.apply-perks{display:flex;flex-direction:column;gap:10px}
+.perk{display:flex;align-items:flex-start;gap:12px;font-size:13px;color:var(--text)}
+.perk-icon{width:28px;height:28px;border-radius:6px;background:var(--green-light);display:flex;align-items:center;justify-content:center;font-size:13px;flex-shrink:0;margin-top:1px}
+.apply-form{background:var(--white);border:1.5px solid var(--border);border-radius:var(--radius);padding:30px;box-shadow:var(--shadow)}
+.apply-form h3{font-size:16px;font-weight:700;color:var(--navy);margin-bottom:20px}
+.field{margin-bottom:16px}
+.field label{display:block;font-size:12px;font-weight:600;color:var(--text);margin-bottom:5px;text-transform:uppercase;letter-spacing:.4px}
+.field input,.field select,.field textarea{width:100%;border:1.5px solid var(--border);border-radius:8px;padding:10px 13px;font-size:13px;color:var(--text);font-family:inherit;transition:.15s;outline:none;background:var(--white)}
+.field input:focus,.field select:focus,.field textarea:focus{border-color:var(--navy);box-shadow:0 0 0 3px rgba(27,39,90,.1)}
+.field textarea{resize:vertical;min-height:90px}
+.submit-btn{width:100%;background:var(--green);color:#fff;border:none;padding:13px;border-radius:8px;font-size:14px;font-weight:700;cursor:pointer;transition:.15s;font-family:inherit}
+.submit-btn:hover{background:#15803D}
+.submit-btn:active{transform:scale(.99)}
+.form-note{font-size:11px;color:var(--muted);text-align:center;margin-top:10px}
+
+/* PARTNERS */
+.partners{padding:40px 24px;border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
+.partner-label{text-align:center;font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:.8px;color:var(--muted);margin-bottom:20px}
+.partner-logos{display:flex;flex-wrap:wrap;justify-content:center;align-items:center;gap:28px}
+.partner-chip{background:var(--light);border:1px solid var(--border);border-radius:8px;padding:8px 18px;font-size:12px;font-weight:700;color:var(--muted)}
+
+/* TOAST */
+#toast-wrap{position:fixed;bottom:90px;right:24px;z-index:999;display:flex;flex-direction:column;gap:8px}
+.toast{display:flex;align-items:center;gap:10px;padding:12px 18px;border-radius:10px;font-size:13px;font-weight:600;box-shadow:0 4px 16px rgba(0,0,0,.15);animation:toastIn .25s ease;max-width:360px}
+@keyframes toastIn{from{opacity:0;transform:translateX(20px)}to{opacity:1;transform:none}}
+.toast-ok{background:#DCFCE7;color:#15803D;border-left:4px solid var(--green)}
+.toast-err{background:#FEE2E2;color:#DC2626;border-left:4px solid var(--red)}
+
+/* WHATSAPP */
+.wa-btn{position:fixed;bottom:24px;right:24px;z-index:200;width:54px;height:54px;background:#25D366;border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 16px rgba(37,211,102,.4);text-decoration:none;transition:.2s;cursor:pointer}
+.wa-btn:hover{transform:scale(1.08);box-shadow:0 6px 22px rgba(37,211,102,.5)}
+.wa-btn svg{width:28px;height:28px;fill:#fff}
+.wa-tooltip{position:absolute;right:64px;background:var(--navy);color:#fff;font-size:12px;font-weight:600;white-space:nowrap;padding:6px 12px;border-radius:6px;opacity:0;transition:.2s;pointer-events:none}
+.wa-btn:hover .wa-tooltip{opacity:1}
+
+/* FOOTER */
+footer{background:var(--navy);padding:48px 24px 28px;color:rgba(255,255,255,.6)}
+.footer-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:32px;margin-bottom:36px;max-width:1100px;margin-left:auto;margin-right:auto}
+.footer-brand .name{font-size:18px;font-weight:800;color:#fff;margin-bottom:6px}
+.footer-brand .tagline{font-size:12px;line-height:1.6;color:rgba(255,255,255,.5);margin-bottom:14px}
+.footer-col h4{font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.6px;color:rgba(255,255,255,.9);margin-bottom:12px}
+.footer-col a{display:block;font-size:13px;color:rgba(255,255,255,.5);text-decoration:none;margin-bottom:7px;transition:.15s}
+.footer-col a:hover{color:#fff}
+.footer-bottom{max-width:1100px;margin:0 auto;padding-top:20px;border-top:1px solid rgba(255,255,255,.08);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;font-size:12px}
+.footer-bottom a{color:rgba(255,255,255,.4);text-decoration:none}
+.powered-by{display:flex;align-items:center;gap:7px;font-size:11px;color:rgba(255,255,255,.35)}
+.zendesk-badge{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.12);padding:3px 9px;border-radius:5px;font-weight:700;color:rgba(255,255,255,.5)}
+
+/* NOTICE */
+.zendesk-notice{background:var(--blue-light);border:1.5px solid #BFDBFE;border-radius:10px;padding:16px 20px;display:flex;align-items:flex-start;gap:12px;font-size:13px;color:#1E40AF;margin-bottom:24px}
+
+/* RESPONSIVE */
+@media(max-width:1024px){
+  .cat-grid{grid-template-columns:repeat(3,1fr)}
+  .footer-grid{grid-template-columns:1fr 1fr}
+}
+@media(max-width:768px){
+  .opp-grid{grid-template-columns:1fr 1fr}
+  .steps{grid-template-columns:1fr}
+  .steps::before{display:none}
+  .story-inner{grid-template-columns:1fr}
+  .apply-inner{grid-template-columns:1fr}
+  .footer-grid{grid-template-columns:1fr 1fr}
+}
+@media(max-width:640px){
+  .nav-links{display:none}
+  .cat-grid{grid-template-columns:repeat(2,1fr)}
+  .opp-grid{grid-template-columns:1fr}
+  .hero-stats{gap:18px}
+  .footer-grid{grid-template-columns:1fr}
+  #toast-wrap{right:14px;left:14px}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav">
+  <a class="nav-brand" href="#">
+    <div class="nav-logo">A</div>
+    <div>
+      <span class="nav-name">AI Pathways Hub</span>
+      <span class="nav-sub">Powered by ACAII-ACTS AI Institute</span>
+    </div>
+  </a>
+  <div class="nav-links">
+    <a class="nav-link" href="#opportunities">Opportunities</a>
+    <a class="nav-link" href="#how">How It Works</a>
+    <a class="nav-link" href="#faq">FAQs</a>
+    <a class="nav-link" href="#apply" style="margin-left:8px">Apply Now</a>
+    <a class="nav-link nav-cta" href="#apply" style="margin-left:4px">Get Support</a>
+  </div>
+  <button class="nav-mobile-toggle" onclick="this.nextElementSibling?.classList.toggle('open')">☰</button>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-badge"><span></span> Now Open — 2026 Cohort</div>
+  <h1>Your Path into AI<br>Starts <span>in Africa</span></h1>
+  <p class="hero-sub">Find scholarships, mentorship, training programmes, and career opportunities in Artificial Intelligence — curated for Africans, by Africans.</p>
+
+  <div class="hero-search">
+    <input type="text" id="hero-search-inp" placeholder="Search scholarships, programmes, or ask a question…" onkeydown="if(event.key==='Enter')heroSearch()">
+    <button onclick="heroSearch()">Search</button>
+  </div>
+
+  <div class="hero-tags">
+    <span class="hero-tag" onclick="filterByTag('scholarship')">🎓 Scholarships</span>
+    <span class="hero-tag" onclick="filterByTag('mentorship')">🤝 Mentorship</span>
+    <span class="hero-tag" onclick="filterByTag('training')">💻 Free Training</span>
+    <span class="hero-tag" onclick="filterByTag('grant')">💰 Grants</span>
+    <span class="hero-tag" onclick="filterByTag('job')">💼 Jobs in Tech</span>
+    <span class="hero-tag" onclick="filterByTag('kenya')">🇰🇪 Kenya</span>
+  </div>
+
+  <div class="hero-stats">
+    <div class="hero-stat"><div class="n" id="stat-opps">47</div><div class="l">Open Opportunities</div></div>
+    <div class="hero-stat"><div class="n">12</div><div class="l">Partner Organisations</div></div>
+    <div class="hero-stat"><div class="n">6</div><div class="l">African Countries</div></div>
+    <div class="hero-stat"><div class="n">340+</div><div class="l">People Supported</div></div>
+  </div>
+</section>
+
+<!-- CATEGORIES -->
+<section class="cats">
+  <div class="container">
+    <div class="section-head" style="text-align:center">
+      <div class="section-label">What Are You Looking For?</div>
+      <h2 class="section-title" style="margin:0 auto 8px">Browse by Category</h2>
+    </div>
+    <div class="cat-grid">
+      <a href="#opportunities" class="cat-card">
+        <div class="cat-icon">🎓</div>
+        <div class="cat-title">Scholarships</div>
+        <div class="cat-desc">Funded AI study programmes for Kenyans and East Africans</div>
+      </a>
+      <a href="#opportunities" class="cat-card">
+        <div class="cat-icon">🤝</div>
+        <div class="cat-title">Mentorship</div>
+        <div class="cat-desc">One-on-one guidance from practising AI professionals</div>
+      </a>
+      <a href="#opportunities" class="cat-card featured">
+        <div class="cat-icon">💡</div>
+        <div class="cat-title">Innovation Grants</div>
+        <div class="cat-desc">Funding for AI-powered solutions solving African problems</div>
+      </a>
+      <a href="#opportunities" class="cat-card">
+        <div class="cat-icon">💻</div>
+        <div class="cat-title">Free Training</div>
+        <div class="cat-desc">Online courses, bootcamps, and workshops at no cost</div>
+      </a>
+      <a href="#apply" class="cat-card">
+        <div class="cat-icon">🙋</div>
+        <div class="cat-title">Ask a Question</div>
+        <div class="cat-desc">Get a personal reply from our team within 24 hours</div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- OPPORTUNITIES -->
+<section id="opportunities">
+  <div class="container">
+    <div style="display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:12px;margin-bottom:32px">
+      <div>
+        <div class="section-label">Open Right Now</div>
+        <h2 class="section-title" style="margin-bottom:0">Featured Opportunities</h2>
+      </div>
+      <div style="display:flex;gap:8px;flex-wrap:wrap" id="opp-filters">
+        <button class="filter-btn active" onclick="setFilter('all',this)">All</button>
+        <button class="filter-btn" onclick="setFilter('scholarship',this)">Scholarships</button>
+        <button class="filter-btn" onclick="setFilter('grant',this)">Grants</button>
+        <button class="filter-btn" onclick="setFilter('training',this)">Training</button>
+        <button class="filter-btn" onclick="setFilter('mentorship',this)">Mentorship</button>
+      </div>
+    </div>
+
+    <style>
+      .filter-btn{background:var(--light);border:1.5px solid var(--border);color:var(--muted);font-size:12px;font-weight:600;padding:6px 14px;border-radius:20px;cursor:pointer;transition:.15s;font-family:inherit}
+      .filter-btn:hover,.filter-btn.active{background:var(--navy);border-color:var(--navy);color:#fff}
+    </style>
+
+    <div class="opp-grid" id="opp-grid">
+
+      <!-- Card 1 -->
+      <div class="opp-card" data-tags="grant scholarship">
+        <div class="opp-banner" style="background:var(--green)"></div>
+        <div class="opp-body">
+          <div class="opp-type" style="color:var(--green)">🏆 Innovation Grant</div>
+          <div class="opp-name">AI4D Innovation Scaling Challenge</div>
+          <div class="opp-org">ACAII-ACTS AI Institute · Africa</div>
+          <div class="opp-desc">Grants of up to USD 75,000 for AI-powered solutions addressing development challenges in health, agriculture, education, and financial inclusion across Africa.</div>
+          <div class="opp-meta">
+            <span class="opp-tag" style="background:var(--green-light);color:var(--green)">Open to All</span>
+            <span class="opp-tag" style="background:var(--blue-light);color:var(--blue)">Pan-African</span>
+            <span class="opp-tag" style="background:var(--amber-light);color:var(--amber)">Up to $75K</span>
+          </div>
+          <div class="deadline-row">
+            <span class="deadline-label">Application deadline</span>
+            <span class="deadline-val">15 Aug 2026</span>
+          </div>
+          <a href="#apply" class="opp-btn green">Apply Now</a>
+        </div>
+      </div>
+
+      <!-- Card 2 -->
+      <div class="opp-card" data-tags="grant scholarship">
+        <div class="opp-banner" style="background:var(--navy)"></div>
+        <div class="opp-body">
+          <div class="opp-type" style="color:var(--navy)">🇬🇧 Challenge Fund</div>
+          <div class="opp-name">UK-Kenya AI Challenge Fund</div>
+          <div class="opp-org">FCDO / ACAII-ACTS AI Institute · Kenya</div>
+          <div class="opp-desc">Funding for Kenyan AI startups and researchers working on solutions with proven impact, in partnership with UK government innovation priorities.</div>
+          <div class="opp-meta">
+            <span class="opp-tag" style="background:var(--blue-light);color:var(--blue)">Kenya Only</span>
+            <span class="opp-tag" style="background:var(--green-light);color:var(--green)">Proof of Concept</span>
+          </div>
+          <div class="deadline-row">
+            <span class="deadline-label">Application deadline</span>
+            <span class="deadline-val">30 Sep 2026</span>
+          </div>
+          <a href="#apply" class="opp-btn">Learn More</a>
+        </div>
+      </div>
+
+      <!-- Card 3 -->
+      <div class="opp-card" data-tags="scholarship mentorship">
+        <div class="opp-banner" style="background:var(--amber)"></div>
+        <div class="opp-body">
+          <div class="opp-type" style="color:var(--amber)">📚 Scholarship + Mentorship</div>
+          <div class="opp-name">AI4D SRAIS Mentorship Programme</div>
+          <div class="opp-org">ACAII-ACTS AI Institute · East Africa</div>
+          <div class="opp-desc">A six-month structured mentorship pairing early-stage AI researchers with senior practitioners. Includes a research grant and publishing support.</div>
+          <div class="opp-meta">
+            <span class="opp-tag" style="background:var(--amber-light);color:var(--amber)">Researchers</span>
+            <span class="opp-tag" style="background:var(--green-light);color:var(--green)">6 Months</span>
+            <span class="opp-tag" style="background:var(--blue-light);color:var(--blue)">East Africa</span>
+          </div>
+          <div class="deadline-row">
+            <span class="deadline-label">Next cohort opens</span>
+            <span class="deadline-val">Jan 2027</span>
+          </div>
+          <a href="#apply" class="opp-btn">Register Interest</a>
+        </div>
+      </div>
+
+      <!-- Card 4 -->
+      <div class="opp-card" data-tags="training">
+        <div class="opp-banner" style="background:#7C3AED"></div>
+        <div class="opp-body">
+          <div class="opp-type" style="color:#7C3AED">🎓 Free Scholarship</div>
+          <div class="opp-name">AI4D Scholarship Programme</div>
+          <div class="opp-org">ACAII-ACTS AI Institute · Africa</div>
+          <div class="opp-desc">Full scholarship covering tuition and stipend for a Master's or PhD programme in AI at a participating African university.</div>
+          <div class="opp-meta">
+            <span class="opp-tag" style="background:#EDE9FE;color:#7C3AED">Masters / PhD</span>
+            <span class="opp-tag" style="background:var(--green-light);color:var(--green)">Full Funding</span>
+          </div>
+          <div class="deadline-row">
+            <span class="deadline-label">Applications open</span>
+            <span class="deadline-val">Mar 2027</span>
+          </div>
+          <a href="#apply" class="opp-btn">Register Interest</a>
+        </div>
+      </div>
+
+      <!-- Card 5 -->
+      <div class="opp-card" data-tags="training mentorship">
+        <div class="opp-banner" style="background:var(--green)"></div>
+        <div class="opp-body">
+          <div class="opp-type" style="color:var(--green)">💻 Online Training</div>
+          <div class="opp-name">Responsible AI for Development — Free Course</div>
+          <div class="opp-org">ACAII-ACTS AI Institute LMS · Open to All</div>
+          <div class="opp-desc">A self-paced online course covering AI ethics, bias detection, responsible deployment, and policy. Certificate issued on completion. 100% free.</div>
+          <div class="opp-meta">
+            <span class="opp-tag" style="background:var(--green-light);color:var(--green)">Free</span>
+            <span class="opp-tag" style="background:var(--blue-light);color:var(--blue)">Self-Paced</span>
+            <span class="opp-tag" style="background:var(--amber-light);color:var(--amber)">Certificate</span>
+          </div>
+          <div class="deadline-row">
+            <span class="deadline-label">Enrolment</span>
+            <span class="deadline-val" style="color:var(--green)">Open Now</span>
+          </div>
+          <a href="#apply" class="opp-btn green">Enrol Free</a>
+        </div>
+      </div>
+
+      <!-- Card 6 -->
+      <div class="opp-card" data-tags="mentorship">
+        <div class="opp-banner" style="background:var(--red)"></div>
+        <div class="opp-body">
+          <div class="opp-type" style="color:var(--red)">🌍 AMR Research</div>
+          <div class="opp-name">AMR AI Innovation Hub</div>
+          <div class="opp-org">ACAII-ACTS AI Institute · Health Sector</div>
+          <div class="opp-desc">Funding and mentorship for innovators using AI to tackle Antimicrobial Resistance in African health systems. Includes lab access and clinical partnership support.</div>
+          <div class="opp-meta">
+            <span class="opp-tag" style="background:var(--red-light);color:var(--red)">Health AI</span>
+            <span class="opp-tag" style="background:var(--blue-light);color:var(--blue)">Research Focus</span>
+          </div>
+          <div class="deadline-row">
+            <span class="deadline-label">Application deadline</span>
+            <span class="deadline-val">31 Oct 2026</span>
+          </div>
+          <a href="#apply" class="opp-btn">Apply Now</a>
+        </div>
+      </div>
+
+    </div>
+
+    <div style="text-align:center;margin-top:28px">
+      <button onclick="showToast('Full opportunity database coming soon — submit your details below to get notified.','ok')" style="background:none;border:1.5px solid var(--border);color:var(--muted);font-size:13px;font-weight:600;padding:10px 24px;border-radius:8px;cursor:pointer;font-family:inherit;transition:.15s" onmouseover="this.style.borderColor='var(--navy)';this.style.color='var(--navy)'" onmouseout="this.style.borderColor='var(--border)';this.style.color='var(--muted)'">View All 47 Opportunities →</button>
+    </div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section class="how" id="how">
+  <div class="container">
+    <div class="section-head" style="text-align:center">
+      <div class="section-label">Simple Process</div>
+      <h2 class="section-title" style="margin:0 auto 8px;text-align:center">How the Hub Works</h2>
+      <p class="section-sub" style="margin:0 auto;text-align:center">From your first question to your first opportunity — three steps.</p>
+    </div>
+    <div class="steps">
+      <div class="step">
+        <div class="step-num s1">1</div>
+        <div class="step-title">Tell Us About Yourself</div>
+        <div class="step-desc">Fill in a short profile — your background, interests, current stage, and what kind of support you need. Takes under 3 minutes.</div>
+      </div>
+      <div class="step">
+        <div class="step-num s2">2</div>
+        <div class="step-title">Get Matched</div>
+        <div class="step-desc">Our AI matching system (powered by Zendesk) instantly surfaces the opportunities, mentors, and resources most relevant to your profile.</div>
+      </div>
+      <div class="step">
+        <div class="step-num s3">3</div>
+        <div class="step-title">Apply with Support</div>
+        <div class="step-desc">A real person from our team reviews your match, helps you prepare your application, and stays with you through the process.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PARTNERS -->
+<div class="partners">
+  <div class="partner-label">Trusted Partners and Funders</div>
+  <div class="partner-logos">
+    <span class="partner-chip">ACAII-ACTS AI Institute</span>
+    <span class="partner-chip">FCDO</span>
+    <span class="partner-chip">AI4D Africa</span>
+    <span class="partner-chip">GIZ</span>
+    <span class="partner-chip">Smart Africa</span>
+    <span class="partner-chip">African Union</span>
+    <span class="partner-chip">Zendesk Foundation</span>
+  </div>
+</div>
+
+<!-- TESTIMONIAL -->
+<section class="story">
+  <div class="story-inner">
+    <div class="story-img">
+      <div class="story-avatar">AM</div>
+      <div class="story-name">Amara M.</div>
+      <div class="story-role">AI Health Innovator</div>
+      <div class="story-country">🇰🇪 Nairobi, Kenya</div>
+      <div style="margin-top:16px;display:flex;flex-direction:column;gap:8px">
+        <div style="background:rgba(22,163,74,.12);border-radius:6px;padding:8px 10px;font-size:11px;color:rgba(255,255,255,.65)">Before: "I didn't know where to start."</div>
+        <div style="background:rgba(22,163,74,.25);border-radius:6px;padding:8px 10px;font-size:11px;color:#86EFAC;font-weight:600">After: $45K grant, 3,200 patients served</div>
+      </div>
+    </div>
+    <div>
+      <div class="section-label" style="color:var(--green-mid)">Success Story</div>
+      <div class="story-quote">
+        I was a nurse with an idea and no idea how to turn it into technology. I found the Hub through WhatsApp, submitted one question, and within 24 hours someone called me back. Six months later I had a grant and a working AI diagnostic tool running in two hospitals.
+      </div>
+      <div class="story-outcome">
+        <span class="outcome-pill">$45K Grant Received</span>
+        <span class="outcome-pill">AI4D Innovation Programme</span>
+        <span class="outcome-pill">3,200 Patients Served</span>
+        <span class="outcome-pill">2 Hospital Partners</span>
+      </div>
+      <div style="margin-top:20px;font-size:13px;color:rgba(255,255,255,.45)">One of 340+ people supported through the ACAII-ACTS AI Institute network</div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section id="faq">
+  <div class="container">
+    <div class="section-head" style="text-align:center">
+      <div class="section-label">Common Questions</div>
+      <h2 class="section-title" style="text-align:center;margin:0 auto 8px">Frequently Asked Questions</h2>
+      <p class="section-sub" style="text-align:center;margin:0 auto 32px">Can't find your answer? Submit a question below and get a reply within 24 hours.</p>
+    </div>
+    <div class="faq-list">
+
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">
+          Do I need a degree to access these opportunities?
+          <span class="faq-icon">+</span>
+        </div>
+        <div class="faq-a">Not necessarily. Some programmes require a degree or specific academic background, but many — including most mentorship and training opportunities — are open to anyone with a genuine interest in AI and a problem they want to solve. We always list the requirements clearly on each opportunity page.</div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">
+          I am not a technical person. Can I still benefit from AI opportunities?
+          <span class="faq-icon">+</span>
+        </div>
+        <div class="faq-a">Absolutely. AI innovation needs more than coders — it needs problem-solvers, community connectors, health workers, farmers, and educators who understand the real challenges. Many of our most successful innovators came from non-technical backgrounds. If you have a problem and a community, we can help you find technical support.</div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">
+          How quickly will I hear back after submitting a question or application?
+          <span class="faq-icon">+</span>
+        </div>
+        <div class="faq-a">Questions submitted through this hub are answered within 24 hours on weekdays. For formal programme applications, timelines vary by programme — all deadlines and response windows are listed on each opportunity card. Our AI assistant handles common questions instantly, day or night.</div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">
+          Can I apply if I am outside Kenya?
+          <span class="faq-icon">+</span>
+        </div>
+        <div class="faq-a">The Hub is currently focused on Kenya, but we are expanding. Several of our opportunities — including the AI4D Innovation Scaling Challenge and AI4D Scholarships — are open to applicants across sub-Saharan Africa. Each opportunity clearly states the eligible countries. If you are in East Africa and cannot find a relevant opportunity, contact us anyway — we may be able to make a referral to a partner organisation.</div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">
+          Is there a cost to use this Hub?
+          <span class="faq-icon">+</span>
+        </div>
+        <div class="faq-a">No. The Africa AI Career Pathways Hub is completely free to use. There are no application fees, registration fees, or subscription costs. ACAII-ACTS AI Institute is funded by development partners specifically to make these opportunities accessible to people who would otherwise not know they exist.</div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">
+          What is ACAII-ACTS AI Institute and who runs this Hub?
+          <span class="faq-icon">+</span>
+        </div>
+        <div class="faq-a">ACAII-ACTS AI Institute (Africa Centre for Advanced Innovation Initiatives — AI and Technology for Society) is a nonprofit organisation supporting AI innovators across Africa. We work with funders including FCDO, AI4D Africa, and GIZ to connect talented individuals and early-stage innovators with the resources they need to build and scale solutions to African challenges.</div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- APPLY -->
+<section class="apply" id="apply">
+  <div class="container">
+    <div class="apply-inner">
+      <div class="apply-left">
+        <div class="section-label">Get Started Today</div>
+        <h2>Tell Us What You Need</h2>
+        <p>Whether you are looking for funding, training, mentorship, or just don't know where to start — fill in this form and a real person will reach out within 24 hours.</p>
+        <div class="apply-perks">
+          <div class="perk"><div class="perk-icon">⚡</div><div><strong>Fast response</strong> — we reply within 24 hours on weekdays</div></div>
+          <div class="perk"><div class="perk-icon">🔒</div><div><strong>Private</strong> — your details are only shared with ACAII programme staff</div></div>
+          <div class="perk"><div class="perk-icon">🆓</div><div><strong>Completely free</strong> — no fees, no subscriptions, ever</div></div>
+          <div class="perk"><div class="perk-icon">📱</div><div><strong>Also on WhatsApp</strong> — message us directly using the button below</div></div>
+        </div>
+      </div>
+
+      <div class="apply-form">
+        <div class="zendesk-notice">
+          <span style="font-size:18px;flex-shrink:0">🤖</span>
+          <div>Our AI assistant reviews your query first and often sends back a matching opportunity within minutes. A human follows up for anything complex.</div>
+        </div>
+        <h3>Submit a Support Request</h3>
+        <form onsubmit="submitForm(event)">
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px">
+            <div class="field"><label>First Name *</label><input type="text" id="f-fname" placeholder="Grace" required></div>
+            <div class="field"><label>Last Name *</label><input type="text" id="f-lname" placeholder="Wanjiru" required></div>
+          </div>
+          <div class="field"><label>Email Address *</label><input type="email" id="f-email" placeholder="grace@example.com" required></div>
+          <div class="field"><label>Phone / WhatsApp</label><input type="tel" id="f-phone" placeholder="+254 700 000 000"></div>
+          <div class="field">
+            <label>What Are You Looking For? *</label>
+            <select id="f-type" required>
+              <option value="">Select one…</option>
+              <option>Scholarship or academic funding</option>
+              <option>Innovation or project grant</option>
+              <option>Mentorship or coaching</option>
+              <option>Free training or online course</option>
+              <option>Job or internship in tech</option>
+              <option>I don't know — help me figure it out</option>
+            </select>
+          </div>
+          <div class="field">
+            <label>Your Background *</label>
+            <select id="f-bg" required>
+              <option value="">Select one…</option>
+              <option>Student (undergraduate)</option>
+              <option>Student (postgraduate / PhD)</option>
+              <option>Early-career professional (0–3 years)</option>
+              <option>Mid-career professional (3+ years)</option>
+              <option>Startup founder / entrepreneur</option>
+              <option>Researcher or academic</option>
+              <option>Other</option>
+            </select>
+          </div>
+          <div class="field"><label>Tell Us About Your Situation</label><textarea id="f-msg" placeholder="Briefly describe what you're working on or what problem you're trying to solve. The more specific you are, the better we can help."></textarea></div>
+          <button type="submit" class="submit-btn">Send My Request — Free</button>
+          <div class="form-note">By submitting you agree that ACAII may contact you about relevant opportunities. We never share your data with third parties.</div>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <div class="name">AI Pathways Hub</div>
+      <p class="tagline">Connecting African talent to AI opportunities — scholarships, grants, mentorship, and training — curated and supported by ACAII-ACTS AI Institute.</p>
+      <div class="powered-by">Powered by <span class="zendesk-badge">Zendesk AI</span> Resolution Platform</div>
+    </div>
+    <div class="footer-col">
+      <h4>Opportunities</h4>
+      <a href="#opportunities">Innovation Grants</a>
+      <a href="#opportunities">Scholarships</a>
+      <a href="#opportunities">Mentorship</a>
+      <a href="#opportunities">Free Training</a>
+      <a href="#opportunities">Tech Jobs</a>
+    </div>
+    <div class="footer-col">
+      <h4>ACAII-ACTS AI Institute</h4>
+      <a href="#">About Us</a>
+      <a href="#">Our Programmes</a>
+      <a href="#">Funded Innovators</a>
+      <a href="#">Community of Practice</a>
+      <a href="#">Research & Publications</a>
+    </div>
+    <div class="footer-col">
+      <h4>Get Help</h4>
+      <a href="#apply">Submit a Request</a>
+      <a href="#faq">FAQs</a>
+      <a href="#">Contact ACAII</a>
+      <a href="#">WhatsApp Support</a>
+      <a href="#">Privacy Policy</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2026 ACAII-ACTS AI Institute. Africa Centre for Advanced Innovation Initiatives. All rights reserved.</span>
+    <a href="#">Kenya | East Africa | Expanding Continent-Wide</a>
+  </div>
+</footer>
+
+<!-- WHATSAPP BUTTON -->
+<a class="wa-btn" href="https://wa.me/254700000000?text=Hello%20ACAII%20AI%20Pathways%20Hub%2C%20I%20am%20looking%20for%20AI%20opportunities..." target="_blank" title="Chat with us on WhatsApp">
+  <span class="wa-tooltip">Chat on WhatsApp</span>
+  <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+  </svg>
+</a>
+
+<!-- TOAST -->
+<div id="toast-wrap"></div>
+
+<script>
+// ── FAQ ──────────────────────────────────────────────────────────
+function toggleFaq(el){
+  const item=el.closest('.faq-item');
+  const isOpen=item.classList.contains('open');
+  document.querySelectorAll('.faq-item.open').forEach(i=>i.classList.remove('open'));
+  if(!isOpen) item.classList.add('open');
+}
+
+// ── FILTER ───────────────────────────────────────────────────────
+function setFilter(tag,btn){
+  document.querySelectorAll('.filter-btn').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');
+  document.querySelectorAll('#opp-grid .opp-card').forEach(card=>{
+    const tags=(card.dataset.tags||'').split(' ');
+    card.style.display=(tag==='all'||tags.includes(tag))?'flex':'none';
+  });
+}
+
+function filterByTag(tag){
+  const btn=Array.from(document.querySelectorAll('.filter-btn')).find(b=>b.textContent.toLowerCase().includes(tag))||document.querySelector('.filter-btn');
+  document.getElementById('opportunities')?.scrollIntoView({behavior:'smooth'});
+  setTimeout(()=>setFilter(tag,btn||document.querySelector('.filter-btn')),600);
+}
+
+// ── SEARCH ───────────────────────────────────────────────────────
+function heroSearch(){
+  const q=document.getElementById('hero-search-inp').value.trim().toLowerCase();
+  if(!q) return;
+  document.getElementById('opportunities')?.scrollIntoView({behavior:'smooth'});
+  let found=0;
+  setTimeout(()=>{
+    document.querySelectorAll('#opp-grid .opp-card').forEach(card=>{
+      const text=card.textContent.toLowerCase();
+      const show=text.includes(q);
+      card.style.display=show?'flex':'none';
+      if(show) found++;
+    });
+    document.querySelectorAll('.filter-btn').forEach(b=>b.classList.remove('active'));
+    showToast(found?`Showing ${found} result(s) for "${q}"`:`No matches for "${q}" — try a different keyword`,found?'ok':'err');
+  },700);
+}
+
+// ── TOAST ────────────────────────────────────────────────────────
+function showToast(msg,type='ok',duration=4500){
+  const wrap=document.getElementById('toast-wrap');
+  const t=document.createElement('div');
+  t.className='toast toast-'+(type==='err'?'err':'ok');
+  t.innerHTML=`<span>${type==='err'?'✕':'✓'}</span><span>${msg}</span>`;
+  wrap.appendChild(t);
+  setTimeout(()=>{t.style.opacity='0';t.style.transition='opacity .3s';setTimeout(()=>t.remove(),300);},duration);
+}
+
+// ── FORM ─────────────────────────────────────────────────────────
+function submitForm(e){
+  e.preventDefault();
+  const btn=e.target.querySelector('.submit-btn');
+  btn.disabled=true; btn.textContent='Sending…';
+  setTimeout(()=>{
+    btn.disabled=false; btn.textContent='Send My Request — Free';
+    showToast('Request submitted! You will hear from us within 24 hours.','ok',6000);
+    e.target.reset();
+  },1400);
+}
+
+// ── ANIMATE STATS ────────────────────────────────────────────────
+function animateCounter(el,target,suffix=''){
+  let n=0; const step=Math.ceil(target/40);
+  const interval=setInterval(()=>{
+    n=Math.min(n+step,target);
+    el.textContent=n+(suffix);
+    if(n>=target) clearInterval(interval);
+  },35);
+}
+
+const observer=new IntersectionObserver(entries=>{
+  entries.forEach(entry=>{
+    if(entry.isIntersecting){
+      animateCounter(document.getElementById('stat-opps'),47,'');
+      observer.disconnect();
+    }
+  });
+},{threshold:.5});
+const statEl=document.querySelector('.hero-stats');
+if(statEl) observer.observe(statEl);
+</script>
+</body>
+</html>
